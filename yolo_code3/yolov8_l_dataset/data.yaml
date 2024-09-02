@@ -1,0 +1,6 @@
+names:
+- BloodSmears
+nc: 1
+test: ''
+train: /content/drive/MyDrive/Colab Notebooks/sem4/project2/yolo_code2/data/train_data/512x512/images
+val: /content/drive/MyDrive/Colab Notebooks/sem4/project2/yolo_code2/data/val_data/512x512/images
