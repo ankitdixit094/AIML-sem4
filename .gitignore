@@ -164,7 +164,3 @@ cython_debug/
 *.jpg
 data/*
 reports/*
-
-*.pt
-*.keras
-*.zip
