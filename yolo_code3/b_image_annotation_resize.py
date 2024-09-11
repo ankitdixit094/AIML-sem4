@@ -14,14 +14,13 @@ H = 512
 
 
 def load_data(path):
-    x = sorted(glob(os.path.join(path, "image", "*.jpg")))
-    y = sorted(glob(os.path.join(path, "mask", "*.jpg")))
+    x = sorted(glob(os.path.join(path, "images", "*.jpg")))
+    y = sorted(glob(os.path.join(path, "masks", "*.jpg")))
     return x, y
 
 
 def get_images_path(patten: str="**"):
-    path = os.path.join("data", "**", "full_size", f"{patten}", f"*.jpg")
-    print(path)
+    path = os.path.join("yolo_code3", "data", "**", "full_size", f"{patten}", f"*.jpg")
     image_path_list = sorted(
         glob(
             path,
@@ -36,11 +35,11 @@ semaphore = threading.Semaphore(10)
 
 def resize_img(img_path: str, dest_dir=None):
     x = img_path
-    x1 = img_path.replace("/image/", "/color_mask/")
-    y = img_path.replace("/image/", "/mask/")
+    x1 = img_path.replace("/images/", "/color_masks/")
+    y = img_path.replace("/images/", "/masks/")
     resize_img = img_path.replace("full_size", f"{dest_dir}")
-    resize_img_color = resize_img.replace("/image/", "/color_mask/")
-    resize_img_mask = resize_img.replace("/image/", "/mask/")
+    resize_img_color = resize_img.replace("/images/", "/color_masks/")
+    resize_img_mask = resize_img.replace("/images/", "/masks/")
     x = cv2.imread(x, cv2.IMREAD_COLOR + cv2.IMREAD_IGNORE_ORIENTATION)
     x1 = cv2.imread(x1, cv2.IMREAD_COLOR + cv2.IMREAD_IGNORE_ORIENTATION)
     y = cv2.imread(y, cv2.IMREAD_GRAYSCALE)
@@ -64,7 +63,7 @@ def worker(image, dest_dir):
 
 
 def resize_images():
-    images = get_images_path(patten="image")
+    images = get_images_path(patten="images")
     for image in images:
         resize_img(image, "512x512")
         t = threading.Thread(target=worker, args=(image, "512x512"))

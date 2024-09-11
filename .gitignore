@@ -169,5 +169,8 @@ unet_code1/data/**/*.jpg
 unet_code1/results/**/*.jpg
 
 yolo_code3/data/**/*.jpg
+yolo_code3/data/**/*.txt
 yolo_code3/results/**/*.jpg
+
+ThickBloodSmears_150/*
 

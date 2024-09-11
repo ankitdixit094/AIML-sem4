@@ -19,8 +19,8 @@ def shuffling(x, y):
     return x, y
 
 def load_data(path):
-    x = sorted(glob(os.path.join(path, "image", "*.jpg")))
-    y = sorted(glob(os.path.join(path, "mask", "*.jpg")))
+    x = sorted(glob(os.path.join(path, "images", "*.jpg")))
+    y = sorted(glob(os.path.join(path, "masks", "*.jpg")))
     return x, y
 
 def read_image(path):
@@ -101,7 +101,7 @@ def process_data(image_paths, mask_paths):
 
         if img_ann:
             img_path = img_info["img_path"]
-            res = img_path.replace("/image/", "/mask_label/").replace(".jpg", ".txt")
+            res = img_path.replace("/images/", "/masks_label/").replace(".jpg", ".txt")
             res_path = "/".join(res.split("/")[:-1])
             create_dir(res_path)
             with open(res, 'w') as file_object:
@@ -167,13 +167,13 @@ if __name__ == "__main__":
 
 
     # data_dir = 'Nuclei-Instance-Dataset'
-    output_dir = 'yolov8_l_dataset'
+    output_dir = 'yolo_code3/yolov8_l_dataset'
     create_dir(output_dir)
 
-    train_path = os.path.join("data", "train_data", "512x512")
+    train_path = os.path.join("yolo_code3", "data", "train_data", "512x512")
     train_img_paths, train_mask_paths = shuffling(*load_data(train_path))
 
-    val_path = os.path.join("data", "val_data", "512x512")
+    val_path = os.path.join("yolo_code3", "data", "val_data", "512x512")
     val_img_paths, val_mask_paths = shuffling(*load_data(val_path))
 
 
