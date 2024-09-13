@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     """ Directory for storing files """
     # create_dir("results_1")
-    save_image_path = os.path.join("unet_code1", "results1", "test_data", '512x512')
+    save_image_path = os.path.join("unet_code1", "results", "test_data", '512x512')
     create_dir(save_image_path)
 
     """ Loading model """
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     """ Load the dataset """
     test_path = os.path.join("unet_code1", "data", "test_data", "512x512")
-    result_path = os.path.join("unet_code1", "results1", "test_data", '512x512')
+    result_path = os.path.join("unet_code1", "results", "test_data", '512x512')
     # test_path = os.path.join("data", "test_data", "512x512")
 
     test_x0, test_x1, test_y = load_data(test_path)
