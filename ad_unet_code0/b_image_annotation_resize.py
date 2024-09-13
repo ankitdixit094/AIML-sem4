@@ -14,14 +14,13 @@ H = 512
 
 
 def load_data(path):
-    x = sorted(glob(os.path.join(path, "image", "*.jpg")))
-    y = sorted(glob(os.path.join(path, "mask", "*.jpg")))
+    x = sorted(glob(os.path.join(path, "images", "*.jpg")))
+    y = sorted(glob(os.path.join(path, "masks", "*.jpg")))
     return x, y
 
 
 def get_images_path(patten: str="**"):
-    path = os.path.join("data", "**", "full_size", f"{patten}", f"*.jpg")
-    print(path)
+    path = os.path.join("ad_unet_code0", "data", "**", "full_size", f"{patten}", f"*.jpg")
     image_path_list = sorted(
         glob(
             path,

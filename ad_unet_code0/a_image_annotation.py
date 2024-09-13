@@ -144,7 +144,7 @@ def list_files_recursive(path, file_type=".jpg"):
 def get_images_path():
     image_path_list = []
     if not os.path.exists("ThickBloodSmears_150"):
-        return "folder ThickBloodSmears_150 does not exist."
+        raise Exception("folder ThickBloodSmears_150 does not exist.")
     # image_path_list = list_files_recursive("ThickBloodSmears_150")
     image_path_list = sorted(
         glob(os.path.join("ThickBloodSmears_150", "**", "*.jpg"), recursive=True)
@@ -166,13 +166,13 @@ def create_marked_images():
     rng_val = round(len(x) * 0.1)
     rng_test = round(len(x) * 0.1)
     for image in x[:rng_train]:
-        t = threading.Thread(target=worker, args=(image, "data/train_data/full_size"))
+        t = threading.Thread(target=worker, args=(image, "ad_unet_code0/data/train_data/full_size"))
         t.start()
     for image in x[rng_train:rng_train+rng_val]:
-        t = threading.Thread(target=worker, args=(image, "data/val_data/full_size"))
+        t = threading.Thread(target=worker, args=(image, "ad_unet_code0/data/val_data/full_size"))
         t.start()
     for image in x[rng_train+rng_val:]:
-        t = threading.Thread(target=worker, args=(image, "data/test_data/full_size"))
+        t = threading.Thread(target=worker, args=(image, "ad_unet_code0/data/test_data/full_size"))
         t.start()
     print("done")
 

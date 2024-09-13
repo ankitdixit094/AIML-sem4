@@ -63,19 +63,19 @@ if __name__ == "__main__":
 
     """ Directory for storing files """
     # create_dir("results_1")
-    save_image_path = os.path.join("results", "test_data", '512x512')
+    save_image_path = os.path.join("ad_unet_code0", "results1", "test_data", '512x512')
     create_dir(save_image_path)
 
     """ Loading model """
     with CustomObjectScope({'iou': iou, 'dice_coef': dice_coef, 'dice_loss': dice_loss}):
-        model = tf.keras.models.load_model("save_model_1/model.keras", safe_mode=False)
+        model = tf.keras.models.load_model("ad_unet_code0/save_model_1/model.keras", safe_mode=False)
 
     """ Load the dataset """
-    val_path = os.path.join("data", "test_data", "512x512")
-    result_path = os.path.join("results", "test_data", '512x512')
-    # val_path = os.path.join("data", "test_data", "512x512")
+    test_path = os.path.join("ad_unet_code0", "data", "test_data", "512x512")
+    result_path = os.path.join("ad_unet_code0", "results1", "test_data", '512x512')
+    # test_path = os.path.join("data", "test_data", "512x512")
 
-    test_x0, test_x1, test_y = load_data(val_path)
+    test_x0, test_x1, test_y = load_data(test_path)
     print(f"Test: {len(test_x0)} - {len(test_x1)} - {len(test_y)}")
 
     """ Evaluation and Prediction """

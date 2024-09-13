@@ -65,7 +65,6 @@ def worker(image, dest_dir):
 def resize_images():
     images = get_images_path(patten="images")
     for image in images:
-        resize_img(image, "512x512")
         t = threading.Thread(target=worker, args=(image, "512x512"))
         t.start()
     print("done")
